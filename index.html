@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pour Ashley Victoire 🌹</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@1,500&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="lock-screen">
+        <div class="lock-content">
+            <div class="flower-anim">🌸</div>
+            <div class="name-container">
+                <h2 class="dynamic-name">Ashley Victoire</h2>
+                <h2 class="dynamic-name stroke">Ashley Victoire</h2>
+                <h2 class="dynamic-name light">Ashley Victoire</h2>
+            </div>
+            <div class="hearts-divider">🖤🖤</div>
+            <h1 class="welcome-text">Bienvenue Ashley Victoire,</h1>
+            <p class="subtitle">Un admirateur vient de t'envoyer un message secret... ✨</p>
+            <div id="input-area">
+                <p class="instruction">Pour y accéder, le code est le prénom de ton dernier petit frère :</p>
+                <input type="text" id="answer" placeholder="Entrer le prénom..." autocomplete="off">
+                <p id="forget-link" onclick="showHint()">Je ne m'en souviens pas...</p>
+            </div>
+            <p id="error-msg" style="display:none; color: #d63384; margin-top: 10px; font-size: 0.8rem;">Ce n'est pas le bon code... 🤫</p>
+            <div id="hint-zone" class="hidden">
+                <p class="hint-text">Mais si, tu sais bien... ton petit frère s'appelle <strong id="hint-name"></strong> ! 😉</p>
+                <button id="force-unlock" onclick="unlock()">Voir le message maintenant</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="message-screen" class="hidden">
+        <div class="envelope">
+            <div id="text-target"></div>
+            <div id="reply-area" class="hidden">
+                <div class="divider">🌹</div>
+                <p class="instruction">Si tu souhaites me laisser un petit mot en retour...</p>
+                <form id="valentine-form" action="https://formspree.io/f/mwvqwvwg" method="POST">
+                    <textarea name="message" placeholder="Ton message pour moi..." required></textarea>
+                    <button type="submit" id="send-reply">Laisser un message</button>
+                </form>
+                <p id="success-msg" class="hidden">J'ai bien reçu ta réponse, merci Victoire... ✨</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
