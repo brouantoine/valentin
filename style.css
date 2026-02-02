@@ -1,7 +1,7 @@
 :root {
     --primary-pink: #d63384;
     --soft-pink: #fde2e4;
-    --white-glass: rgba(255, 255, 255, 0.7);
+    --white-glass: rgba(255, 255, 255, 0.8);
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 
 .hidden { display: none !important; }
 
-/* Conteneur principal style Verre (Glassmorphism) */
+/* Conteneur principal Glassmorphism */
 .lock-content { 
     text-align: center; 
     padding: 40px 20px;
@@ -33,7 +33,7 @@ body {
     border: 1px solid rgba(255,255,255,0.4);
 }
 
-/* Animation du nom */
+/* Animation du nom Ashley Victoire */
 .name-container {
     margin: 20px 0;
 }
@@ -52,7 +52,7 @@ body {
 }
 
 .dynamic-name.light {
-    color: #d63384;
+    color: var(--primary-pink);
     opacity: 0.6;
     animation-delay: 1s;
 }
@@ -66,11 +66,17 @@ body {
     font-family: 'Dancing Script', cursive;
     color: var(--primary-pink);
     font-size: 1.6rem;
+    margin: 10px 0;
 }
 
-.subtitle { font-size: 0.8rem; opacity: 0.8; margin-bottom: 25px; }
+.subtitle { 
+    font-size: 0.8rem; 
+    opacity: 0.8; 
+    margin-bottom: 25px; 
+}
 
-input {
+/* Champs de saisie */
+input, textarea {
     background: white;
     border: 1px solid var(--soft-pink);
     border-radius: 12px;
@@ -81,30 +87,56 @@ input {
     width: 100%;
     padding: 12px;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
-#forget-link {
-    font-size: 0.75rem;
-    text-decoration: underline;
-    margin-top: 15px;
-    color: #64b5f6;
-    cursor: pointer;
+textarea { 
+    height: 100px; 
+    text-align: left; 
+    resize: none; 
+    margin-bottom: 15px; 
 }
 
-#force-unlock {
+/* Boutons */
+#validate-btn, #force-unlock, #send-reply {
     background: var(--primary-pink);
     color: white;
     border: none;
     padding: 14px 30px;
     border-radius: 30px;
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
     box-shadow: 0 8px 20px rgba(214, 51, 132, 0.2);
     width: 100%;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.2s;
 }
 
+#validate-btn:active, #force-unlock:active, #send-reply:active {
+    transform: scale(0.97);
+}
+
+/* Liens et Aide */
+#forget-link {
+    font-size: 0.75rem;
+    text-decoration: underline;
+    margin-top: 15px;
+    color: #64b5f6;
+    cursor: pointer;
+    display: block;
+}
+
+.hint-text {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+/* Enveloppe du message final */
 .envelope {
     width: 85%;
-    max-height: 70vh;
+    max-height: 80vh;
     background: white;
     padding: 30px;
     border-radius: 30px;
@@ -112,60 +144,25 @@ input {
     font-size: 1.1rem;
     line-height: 1.8;
     overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
 }
 
-
-:root {
-    --primary-pink: #d63384;
-    --soft-pink: #fde2e4;
-    --white-glass: rgba(255, 255, 255, 0.8);
+/* Zone de réponse par mail */
+#reply-area { 
+    margin-top: 30px; 
+    padding-top: 20px; 
+    border-top: 1px solid #eee; 
+    animation: fadeIn 1.5s ease; 
 }
 
-body {
-    margin: 0; padding: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
-    background: linear-gradient(180deg, #f8bbd0 0%, #fce4ec 100%);
-    font-family: 'Montserrat', sans-serif; overflow: hidden; color: #444;
+#success-msg { 
+    color: var(--primary-pink); 
+    font-weight: bold; 
+    margin-top: 15px; 
+    font-style: italic;
 }
 
-.hidden { display: none !important; }
-
-.lock-content { 
-    text-align: center; padding: 40px 20px; background: var(--white-glass);
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.05);
-    width: 85%; max-width: 400px; border: 1px solid rgba(255,255,255,0.4);
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
-
-.name-container { margin: 20px 0; }
-.dynamic-name { font-family: 'Dancing Script', cursive; font-size: 1.8rem; margin: -10px 0; animation: float 3s ease-in-out infinite; }
-.dynamic-name.stroke { color: transparent; -webkit-text-stroke: 1px #333; animation-delay: 0.5s; }
-.dynamic-name.light { color: var(--primary-pink); opacity: 0.6; animation-delay: 1s; }
-
-@keyframes float { 0%, 100% { transform: translateY(0); opacity: 0.8; } 50% { transform: translateY(-10px); opacity: 1; } }
-
-.welcome-text { font-family: 'Dancing Script', cursive; color: var(--primary-pink); font-size: 1.6rem; }
-.subtitle { font-size: 0.8rem; opacity: 0.8; margin-bottom: 25px; }
-
-input, textarea {
-    background: white; border: 1px solid var(--soft-pink); border-radius: 12px;
-    color: #333; font-size: 1rem; text-align: center; outline: none; width: 100%;
-    padding: 12px; box-sizing: border-box; font-family: 'Montserrat', sans-serif;
-}
-
-textarea { height: 100px; text-align: left; resize: none; margin-bottom: 15px; }
-
-#forget-link { font-size: 0.75rem; text-decoration: underline; margin-top: 15px; color: #64b5f6; cursor: pointer; }
-
-#force-unlock, #send-reply {
-    background: var(--primary-pink); color: white; border: none; padding: 14px 30px;
-    border-radius: 30px; font-weight: bold; box-shadow: 0 8px 20px rgba(214, 51, 132, 0.2); width: 100%;
-}
-
-.envelope {
-    width: 85%; max-height: 80vh; background: white; padding: 30px;
-    border-radius: 30px; font-family: 'Playfair Display', serif;
-    font-size: 1.1rem; line-height: 1.8; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-}
-
-#reply-area { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; animation: fadeIn 1.5s ease; }
-#success-msg { color: var(--primary-pink); font-weight: bold; margin-top: 15px; }

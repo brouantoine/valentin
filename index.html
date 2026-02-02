@@ -19,12 +19,16 @@
             <div class="hearts-divider">🖤🖤</div>
             <h1 class="welcome-text">Bienvenue Ashley Victoire,</h1>
             <p class="subtitle">Un admirateur vient de t'envoyer un message secret... ✨</p>
+            
             <div id="input-area">
                 <p class="instruction">Pour y accéder, le code est le prénom de ton dernier petit frère :</p>
                 <input type="text" id="answer" placeholder="Entrer le prénom..." autocomplete="off">
+                <button id="validate-btn" onclick="checkCode()">Valider le code</button>
                 <p id="forget-link" onclick="showHint()">Je ne m'en souviens pas...</p>
             </div>
+
             <p id="error-msg" style="display:none; color: #d63384; margin-top: 10px; font-size: 0.8rem;">Ce n'est pas le bon code... 🤫</p>
+
             <div id="hint-zone" class="hidden">
                 <p class="hint-text">Mais si, tu sais bien... ton petit frère s'appelle <strong id="hint-name"></strong> ! 😉</p>
                 <button id="force-unlock" onclick="unlock()">Voir le message maintenant</button>
@@ -35,6 +39,7 @@
     <div id="message-screen" class="hidden">
         <div class="envelope">
             <div id="text-target"></div>
+            
             <div id="reply-area" class="hidden">
                 <div class="divider">🌹</div>
                 <p class="instruction">Si tu souhaites me laisser un petit mot en retour...</p>

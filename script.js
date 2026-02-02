@@ -7,14 +7,20 @@ const lockScreen = document.getElementById('lock-screen');
 const messageScreen = document.getElementById('message-screen');
 const textTarget = document.getElementById('text-target');
 
+// Fonction globale pour vérifier le code (Bouton ou Entrée)
+function checkCode() {
+    if (input.value.toLowerCase().trim() === secretName.toLowerCase()) {
+        unlock();
+    } else {
+        document.getElementById('error-msg').style.display = 'block';
+        input.value = "";
+    }
+}
+
+// Support de la touche Entrée
 input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-        if (input.value.toLowerCase().trim() === secretName.toLowerCase()) {
-            unlock();
-        } else {
-            document.getElementById('error-msg').style.display = 'block';
-            input.value = "";
-        }
+        checkCode();
     }
 });
 
@@ -48,16 +54,16 @@ function startTyping() {
             else if (char === '\n') delay = 1100;
             i++;
             setTimeout(type, delay);
-            messageScreen.scrollTop = messageScreen.scrollHeight;
+            // Scroll fluide pour iPhone
+            messageScreen.scrollTo({ top: messageScreen.scrollHeight, behavior: 'smooth' });
         } else {
-            // Affiche le formulaire de réponse à la fin
             document.getElementById('reply-area').classList.remove('hidden');
         }
     }
     type();
 }
 
-// Gestion de l'envoi Formspree
+// Envoi Formspree
 const form = document.getElementById('valentine-form');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
