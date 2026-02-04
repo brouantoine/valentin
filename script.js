@@ -1,83 +1,106 @@
-const secretName = "prince"; 
+// --- CONFIGURATION ---
+// Texte final qui s'affiche (Barrière invisible)
+const message = "Je suis celui qui te répète sans cesse de rester concentrée, alors que je lutte moi-même pour ne pas franchir cette barrière invisible à moins d'un mètre de toi... 📏\n\nAujourd'hui tu m'écoutes parce que tu le dois, mais j'espère qu'un jour... tu m'écouteras parce que tu le veux. 🌹";
 
-const message = "BRIBO Victoire... ❤️\n\nTu sais, il y a des douceurs que l'on n'ose pas toujours murmurer. Mais aujourd'hui, j'avais ce besoin immense que tu saches... ✨\n\nDepuis le premier jour où j'ai posé les yeux sur toi, j'ai commencé à t'admirer. Porter ce sentiment en silence est devenu un poids, mais si je choisis de taire mon identité pour l'instant, ce n'est pas par manque de courage. Au contraire. 🌹\n\nJe voulais que tu saches sincèrement que je t'aime. Si je ne te le dis pas ouvertement, ce n'est pas par faiblesse ou par incapacité à assumer mes propos — je suis tout à fait capable de te regarder dans les yeux et de te le dire en face. C'est simplement que la situation actuelle impose une retenue que je m'oblige à respecter, avant tout dans ton intérêt.\n\nJe fais ceci pour libérer ce que je porte en moi, tout en préservant l'équilibre de nos mondes. Sache simplement que quelqu'un veille sur toi, avec force et sincérité. 💪❤️\n\n***\n\nJ'insiste sur un point : garde ce message et ce secret pour toi seule. Je sais que tu es quelqu'un de loyale, que cela reste notre secret, peu importe qui je suis... 🤫";
-
+// --- DOM ELEMENTS ---
 const input = document.getElementById('answer');
 const lockScreen = document.getElementById('lock-screen');
 const messageScreen = document.getElementById('message-screen');
 const textTarget = document.getElementById('text-target');
 
-// Fonction globale pour vérifier le code (Bouton ou Entrée)
+// --- LOGIQUE PERMISSIVE ---
+// Peu importe ce qu'elle tape, tant que ce n'est pas vide, ça passe.
 function checkCode() {
-    if (input.value.toLowerCase().trim() === secretName.toLowerCase()) {
+    if (input.value.trim().length > 0) {
         unlock();
     } else {
-        document.getElementById('error-msg').style.display = 'block';
-        input.value = "";
+        const errorMsg = document.getElementById('error-msg');
+        errorMsg.style.display = 'block';
+        errorMsg.animate([
+            { transform: 'translateX(-5px)' },
+            { transform: 'translateX(5px)' },
+            { transform: 'translateX(0)' }
+        ], { duration: 200, iterations: 2 });
     }
 }
 
-// Support de la touche Entrée
+// Touche Entrée
 input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        checkCode();
-    }
+    if (e.key === 'Enter') checkCode();
 });
 
-function showHint() {
-    document.getElementById('input-area').classList.add('hidden');
-    document.getElementById('error-msg').style.display = 'none';
-    const hintZone = document.getElementById('hint-zone');
-    document.getElementById('hint-name').innerText = secretName.charAt(0).toUpperCase() + secretName.slice(1);
-    hintZone.classList.remove('hidden');
-}
-
 function unlock() {
+    // Animation de disparition douce
     lockScreen.style.opacity = "0";
-    lockScreen.style.transition = "all 0.6s ease";
+    lockScreen.style.transition = "all 0.8s ease";
     setTimeout(() => {
         lockScreen.classList.add('hidden');
         messageScreen.classList.remove('hidden');
         startTyping();
-    }, 600);
+    }, 800);
 }
 
+// --- ÉCRITURE AUTOMATIQUE ---
 function startTyping() {
     let i = 0;
+    
     function type() {
         if (i < message.length) {
             let char = message.charAt(i);
             textTarget.innerHTML += char === '\n' ? '<br>' : char;
-            let delay = 55; 
-            if (char === '.' || char === '!' || char === '❤️') delay = 900; 
+            
+            // Rythme naturel
+            let delay = 50; 
+            if (char === '.' || char === '!' || char === '…') delay = 800; 
             else if (char === ',') delay = 400;
-            else if (char === '\n') delay = 1100;
+            
             i++;
             setTimeout(type, delay);
-            // Scroll fluide pour iPhone
-            messageScreen.scrollTo({ top: messageScreen.scrollHeight, behavior: 'smooth' });
+            
+            // Scroll automatique
+            const container = document.querySelector('.envelope');
+            if(container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+
         } else {
-            document.getElementById('reply-area').classList.remove('hidden');
+            // Affichage du formulaire 2s après la fin du texte
+            setTimeout(() => {
+                document.getElementById('reply-area').classList.remove('hidden');
+                // Scroll final vers la note secrète
+                const container = document.querySelector('.envelope');
+                if(container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+            }, 2000);
         }
     }
     type();
 }
 
-// Envoi Formspree
+// --- ENVOI FORMSPREE ---
 const form = document.getElementById('valentine-form');
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const sendBtn = document.getElementById('send-reply');
-    sendBtn.innerText = "Envoi en cours...";
-    
-    const response = await fetch(form.action, {
-        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
-    });
+if (form) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const sendBtn = document.getElementById('send-reply');
+        sendBtn.innerText = "Envoi...";
+        sendBtn.disabled = true;
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST', 
+                body: data, 
+                headers: { 'Accept': 'application/json' }
+            });
 
-    if (response.ok) {
-        form.classList.add('hidden');
-        document.querySelector('#reply-area .instruction').classList.add('hidden');
-        document.getElementById('success-msg').classList.remove('hidden');
-    }
-});
+            if (response.ok) {
+                form.classList.add('hidden');
+                document.querySelector('.instruction').classList.add('hidden');
+                document.getElementById('success-msg').classList.remove('hidden');
+            } else {
+                sendBtn.innerText = "Erreur.";
+                sendBtn.disabled = false;
+            }
+        } catch (error) {
+            sendBtn.innerText = "Erreur connexion.";
+        }
+    });
+}
