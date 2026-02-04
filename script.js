@@ -1,6 +1,6 @@
 // --- CONFIGURATION ---
 // Texte final qui s'affiche (Barrière invisible)
-const message = "Je suis celui qui te répète sans cesse de rester concentrée, alors que je lutte moi-même pour ne pas franchir cette barrière invisible à moins d'un mètre de toi... 📏\n\nAujourd'hui tu m'écoutes parce que tu le dois, mais j'espère qu'un jour... tu m'écouteras parce que tu le veux. 🌹";
+const message = "Princesse Victoire, la fille aux yeux irresistibles....❤️ \nJe suis celui qui te répète sans cesse de rester concentrée, alors que je lutte moi-même pour ne pas franchir cette barrière invisible à moins d'un mètre de toi... 📏\n\nAujourd'hui tu m'écoutes parce que tu le dois, mais j'espère qu'un jour... tu m'écouteras parce que tu le veux. 🌹";
 
 // --- DOM ELEMENTS ---
 const input = document.getElementById('answer');
