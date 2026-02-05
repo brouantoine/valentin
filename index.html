@@ -1,4 +1,59 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pour Ashley Victoire 🌹</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="lock-screen">
+        <div class="lock-card">
+            <div class="header-icon">🌹</div>
+            <h1 class="welcome-title">Ashley Victoire</h1>
+            <p class="welcome-message">
+                Coucou Ashley, quelqu'un qui te voit souvent t'a écrit ceci... ✨
+            </p>
+            <div class="divider-red"></div>
+            <div id="input-area">
+                <p class="instruction">Pour lire, le mot de passe est le prénom de ton dernier petit frère :</p>
+                <input type="text" id="answer" placeholder="Son prénom..." autocomplete="off">
+                <button id="validate-btn" onclick="checkCode()">Accéder au message</button>
+            </div>
+            <p id="error-msg" style="display:none; color: #c92a42;">Ce n'est pas le bon prénom... 🤫</p>
+        </div>
+    </div>
+
+    <div id="message-screen" class="hidden">
+        <div class="envelope">
+            <div id="text-target"></div>
+            <div id="reply-area" class="hidden">
+                <div class="divider-red-small">🌹</div>
+                <p class="instruction">Si tu souhaites me laisser un petit mot en retour...</p>
+                <form id="valentine-form" action="https://formspree.io/f/mwvqwvwg" method="POST">
+                    <textarea name="message" placeholder="Ton message pour moi..." required></textarea>
+                    <button type="submit" id="send-reply">Laisser un message</button>
+                </form>
+                <p id="success-msg" class="hidden">J'ai bien reçu ta réponse, merci Victoire... ✨</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -46,6 +101,66 @@
                 
                 <p id="success-msg" class="hidden">Message envoyé. Merci Victoire. 🌹</p>
 
+                <div class="secret-warning">
+                    ⚠️ <strong>Important :</strong> Même si tu as deviné qui je suis, je te demande de garder ce secret pour toi. Ne le dis à personne. J'y tiens vraiment, dans notre intérêt à tous les deux. 🤫
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pour Victoire 🌹</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="petals-container"></div>
+
+    <div id="lock-screen">
+        <div class="lock-card">
+            <div class="header-icon">🌹</div>
+            <h1 class="welcome-title">Victoire</h1>
+            <p class="welcome-message">
+                Heureux de savoir que tu accordes de l'importance à ce petit truc que j'ai réalisé uniquement pour toi, j'en suis ravi.
+            </p>
+            <div class="divider-red"></div>
+            <div id="input-area">
+                <p class="instruction">Pour accéder à l'indice, entre la coueleur de ton <strong style="color: var(--deep-red);">Iphone</strong> :</p>
+                <input type="text" id="answer" placeholder="Sa coueleur..." autocomplete="off">
+                <button id="validate-btn" onclick="checkCode()">Découvrir</button>
+            </div>
+            <p id="error-msg" style="display:none;">Écris un nom pour continuer... 🌹</p>
+        </div>
+    </div>
+
+    <div id="message-screen" class="hidden">
+        <div class="envelope">
+            <div id="text-target"></div>
+            <div id="reply-area" class="hidden">
+                <div class="divider-red-small">❧</div>
+                <form id="valentine-form" action="https://formspree.io/f/mwvqwvwg" method="POST">
+                    <textarea name="message" placeholder="Ta réponse..." required></textarea>
+                    <button type="submit" id="send-reply">Envoyer</button>
+                </form>
+                <p id="success-msg" class="hidden">Message envoyé. Merci Victoire. 🌹</p>
                 <div class="secret-warning">
                     ⚠️ <strong>Important :</strong> Même si tu as deviné qui je suis, je te demande de garder ce secret pour toi. Ne le dis à personne. J'y tiens vraiment, dans notre intérêt à tous les deux. 🤫
                 </div>
